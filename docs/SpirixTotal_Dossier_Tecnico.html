@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpirixTotal - Dossier Técnico y Comercial</title>
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #38bdf8;
+            --text: #334155;
+            --light: #f8fafc;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f5f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px 60px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--accent);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: var(--primary);
+            font-size: 2.4rem;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+        .header p {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin: 0;
+        }
+        h2 {
+            color: var(--primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+            margin-top: 40px;
+        }
+        h3 {
+            color: #0f172a;
+            margin-top: 30px;
+        }
+        p {
+            font-size: 1.05rem;
+        }
+        ul {
+            font-size: 1.05rem;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .feature-box {
+            background: var(--light);
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .feature-box strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        .print-btn {
+            display: block;
+            width: max-content;
+            margin: 0 auto 30px auto;
+            padding: 12px 24px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+        .print-btn:hover {
+            background-color: #1e293b;
+        }
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; margin: 0; padding: 0; border: none; max-width: 100%; }
+            .print-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="print-btn" onclick="window.print()">🖨️ Guardar como PDF / Imprimir</button>
+        
+        <div class="header">
+            <h1>SpirixTotal Multi-Sport</h1>
+            <p>Dossier Técnico: Plataforma Universal de Gestión y Arbitraje</p>
+        </div>
+
+        <h2>Visión General</h2>
+        <p>SpirixTotal es el ecosistema de software definitivo para la gestión integral de campeonatos de deportes de contacto y disciplinas de apreciación técnica. Su arquitectura escalable permite administrar desde torneos locales de 2 áreas de competencia hasta eventos mundiales de más de 12 áreas simultáneas, garantizando fluidez, transparencia y cero margen de error.</p>
+
+        <h2>1. Motor de Arbitraje Inalámbrico y Puntuación</h2>
+        <p>El núcleo del sistema está diseñado para eliminar la latencia y maximizar la concentración de los jueces, utilizando tecnología de redes locales (LAN/WLAN) de alta velocidad.</p>
+        
+        <div class="feature-box">
+            <strong>Consolas Móviles (Smartphones y Tablets)</strong>
+            Los jueces de esquina no requieren hardware propietario. A través de un código QR local, cualquier teléfono inteligente se transforma en una consola de votación blindada, enviando los puntos a la mesa central en milisegundos.
+        </div>
+        
+        <div class="feature-box">
+            <strong>Hardware Físico (Gamepads y USB)</strong>
+            Para torneos que exigen cero interferencia inalámbrica, el sistema mapea controles USB estándar (teclados numéricos, gatillos) para que los jueces marquen puntos de forma táctil sin desviar la mirada de los competidores.
+        </div>
+
+        <h2>2. Flexibilidad Reglamentaria Universal</h2>
+        <p>A diferencia de sistemas estáticos, SpirixTotal posee un motor de reglas 100% parametrizable que se adapta a cualquier reglamento deportivo internacional:</p>
+        <ul>
+            <li><strong>Combate al Punto y Continuo:</strong> Configuración de asaltos (rounds), tiempo médico, deducciones por advertencias y penalidades, y victoria automática por diferencia de puntos (límite de superioridad).</li>
+            <li><strong>Formas y Coreografías:</strong> Sistema de evaluación dual. Soporta votación por banderas (enfrentamiento directo) o puntuación decimal por criterios (evaluando aspectos como ritmo, exactitud técnica y potencia).</li>
+        </ul>
+
+        <h2>3. Displays de Estadio y Transmisión</h2>
+        <p>La experiencia visual del estadio es fundamental para atletas y espectadores. SpirixTotal emite señal gráfica de nivel televisivo.</p>
+        <ul>
+            <li><strong>SmartTVs en Mesa Central:</strong> Interfaz gráfica de alto contraste (Dark Mode) que muestra el cronómetro, puntuación en tiempo real, banderas de los competidores y advertencias.</li>
+            <li><strong>Integración de Video:</strong> Soporte nativo para incrustar la interfaz sobre transmisión de video en vivo (Compatible con OBS Studio) para streaming y pantallas gigantes.</li>
+        </ul>
+
+        <h2>4. Arquitectura Offline-First (Tolerancia a Fallos)</h2>
+        <p>Entendemos que la conectividad en un estadio puede ser inestable. SpirixTotal está diseñado bajo el principio de "Cero Puntos de Falla Únicos".</p>
+        <ul>
+            <li><strong>Operación 100% Local:</strong> Durante el evento, el sistema no requiere conexión a Internet. Toda la comunicación entre jueces, pantallas y la consola de control ocurre en una red privada local.</li>
+            <li><strong>Recuperación Inmediata:</strong> Si una computadora se apaga repentinamente o un juez pierde conexión, la base de datos local embebida garantiza que, al reconectar, el combate se reanude en el milisegundo exacto y con el mismo puntaje previo a la interrupción.</li>
+        </ul>
+
+        <h2>5. Gestión en la Nube (SpirixCloud)</h2>
+        <p>Para la fase previa al evento (Inscripciones), el sistema ofrece un portal web robusto que se sincroniza con la aplicación de escritorio.</p>
+        <ol>
+            <li>El organizador crea el evento y genera un enlace único.</li>
+            <li>Los directores y entrenadores ingresan al portal para inscribir a sus atletas según categorías de peso, edad y grado.</li>
+            <li>El día del evento, el operador central hace un clic en "Sincronizar" para descargar toda la base de datos de atletas al software de la mesa de control.</li>
+            <li>El motor matemático de SpirixTotal genera automáticamente las llaves y cruces del campeonato de forma aleatoria y equilibrada.</li>
+        </ol>
+
+        <div class="footer">
+            <p>&copy; 2026 SpirixTotal. "Usted lo propone, Spirix lo Crea."<br>Tecnología Offline-First • LAN Ultra-Baja Latencia</p>
+        </div>
+    </div>
+</body>
+</html>

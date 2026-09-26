@@ -1,0 +1,739 @@
+﻿<!DOCTyPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpirixTotal — Plataforma Integral de Gestión y Puntuación Electrónica de Torneos</title>
+  
+  <meta name="description" content="SpirixTotal 2.0 es el sistema líder para torneos de artes marciales y deportes de combate. Cero latencia Lan, puntuación inalámbrica por celulares y SmartTVs, y arquitectura offline-first a prueba de fallos. Usted lo propone, Spirix lo Crea.">
+  <meta name="keywords" content="SpirixTotal, torneo taekwondo, artes marciales software, puntuacion electronica, llaves de torneo, ITFU, WKF, kickboxing, poomsae, kyorugi">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="SpirixTotal — El Corazón de tu Torneo está en tus Competidores">
+  <meta property="og:description" content="Software profesional de torneos de artes marciales: cronómetros, puntuación inalámbrica de jueces, displays para estadios y transmisión OBS.">
+  <meta property="og:image" content="/img/logo-spirixtotal.png">
+  
+  <link rel="icon" type="image/png" href="/img/logo-spirixtotal.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       BARRA DE NAVEGACIÓN SUPERIOR
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand-link" title="Inicio SpirixTotal">
+        <img src="img/logo-spirixtotal-transparent.png" alt="SpirixTotal" class="brand-logo-img">
+      </a>
+      
+      <nav class="nav-menu">
+        <a href="#simulador" class="nav-link">Simulador en Vivo</a>
+        <a href="#resiliencia" class="nav-link">Blindaje ante Fallos</a>
+        <a href="#disciplinas" class="nav-link">Disciplinas</a>
+        <a href="#evidencia" class="nav-link">Evidencia en Torneos</a>
+        <a href="#modulos" class="nav-link">Módulos</a>
+        <a href="#cotizador" class="nav-link">Cotizar</a>
+      </nav>
+      
+      <div class="header-actions">
+        <!-- Acceso ordenado a inscripciones con explicación de código -->
+        <a href="https://spirixcloud-server.onrender.com" onclick="openCloudModal(event)" class="btn-cloud-access" title="Acceso a Inscripciones Cloud para Maestros">
+          <span>☁️</span>
+          <span>Portal Instructores</span>
+        </a>
+        
+        <a href="#cotizador" class="btn-cta-nav">
+          <span>💬</span>
+          <span>Cotizar Torneo</span>
+        </a>
+        
+        <button class="mobile-toggle" aria-label="Abrir menú">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================
+         HERO SECTION: LOGO PROTAGÓnico y COLLAGE FULL-WIDTH TRASERO
+         ======================================================================== -->
+    <section class="hero-fullwidth-section">
+      <!-- Fondo Dinámico: Collage Panorámico de Torneos Reales -->
+      <div class="hero-backdrop-collage" aria-hidden="true"></div>
+      <div class="hero-backdrop-overlay aria-hidden="true"></div>
+
+      <div class="container">
+        <!-- LOGO OFICIAL TRanSPARENTE, GRanDE y COMERCIALMENTE DESEABLE -->
+        <div class="hero-main-logo-wrap">
+          <img src="img/logo-spirixtotal-transparent.png" alt="SpirixTotal — El corazón de tu torneo está en tus competidores" class="hero-main-logy>
+        </div>
+        
+        <h1 class="hero-headline">
+          La Plataforma Definitiva de <span class="gradient-text">Puntuación Electrónica y Gestión de Torneos.</span>
+        </h1>
+        
+        <!-- EL CONCEPTO CLAVE -->
+        <div class="hero-concept-badge">
+          <span>🥋</span>
+          <span>"SpirixTotal se adapta a todos los reglamentos: <strong>Usted lo propone, Spirix lo Crea.</strong>"</span>
+        </div>
+        
+        <p class="hero-description-lead">
+          Diseñado para superar los desafíos de un estadio real: <strong>Cero cables HDMI</strong>, pantallas gigantes en SmartTVs sin cables, jueces puntuando desde sus teléfonos celulares por código QR y <strong>arquitectura Offline-First con SQLite</strong> que jamás se detiene ante cortes de energía o caídas de Internet.
+        </p>
+
+        <!-- Chips de blindaje y características -->
+        <div class="hero-feature-pills">
+          <span class="pill-chip"><span class="pill-icon">⚡</span> Cero Caídas (SQLite Offline)</span>
+          <span class="pill-chip"><span class="pill-icon">🥋</span> 10 Disciplinas Oficiales</span>
+          <span class="pill-chip"><span class="pill-icon">📱</span> Jueces Móviles por QR</span>
+          <span class="pill-chip"><span class="pill-icon">📺</span> SmartTV WiFi Sin Cables</span>
+          <span class="pill-chip"><span class="pill-icon">🛡️</span> Hot-Swap & Auditoría HMAC</span>
+        </div>
+        
+        <div class="hero-cta-group">
+          <a href="#simulador" class="btn-primary>
+            <span>🎮</span>
+            <span>Probar Tatami Interactivo</span>
+          </a>
+
+          <a href="#evidencia" class="btn-secondary>
+            <span>📷</span>
+            <span>Ver Pantallas y Tatamis Reales</span>
+          </a>
+          
+          <a href="mailto:spirixtotal@gmail.com?subject=Consulta%20sobre%20SpirixTotal&body=Hola,%20me%20gustar&iacute;a%20pedir%20informaci&oacute;n%20y%20datos%20sobre%20el%20sistema%20SpirixTotal." class="btn-secondary">
+              <span>✉️</span>
+              <span>Consultar por Correo</span>
+            </a>
+          
+          <a href="docs/SpirixTotal_Dossier_Tecnico.html" target="_blank" class="btn-secondary>
+            <span>📄</span>
+            <span>Dossier T&eacute;cnico</span>
+          </a>
+        </div>
+
+        <!-- VITRINA DestACAda DE PUNTA A PUNTA: FUSIÓN DE PanTALLAS ORIGINALES SPIRIX y LOGO TRanSLÚCIDO -->
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECCIÓN DE EVIDENCIA EN TORNEO: FOTOGRAFÍAS REALES EN TATAMI
+         ======================================================================== -->
+    <section id="operacion-tatami" class="evidence-section">
+      <div class="container">
+        <div class="evidence-header">
+          <span class="section-tag">Fotografía Real de Torneo en Vivo</span>
+          <h2 class="section-title">El Sistema Operando en el Tatami</h2>
+          <p class="section-subtitle">
+            Sin maquetas ficticias ni renders: así funciona SpirixTotal 2.0 en los estadios y torneos oficiales.
+          </p>
+        </div>
+
+        <div class="hero-collage-grid">
+          <!-- Pantalla 1: Mesa Técnica y Operador con Laptop Acer -->
+          <div class="collage-card">
+            <img src="img/operador-mesa-tecnica.jpg" alt="Mesa técnica y operador con laptop corriendo SpirixTotal en vivo en el estadiy>
+            <div class="collage-overlay>
+              <span class="collage-tag">Consola Central</span>
+              <div class="collage-title">Mesa Técnica Oficial</div>
+              <div class="collage-desc">Operador coordinando el cronómetro y la sincronización con tatamis</div>
+            </div>
+          </div>
+          
+          <!-- Pantalla 2: Display de Combate SmartTV y Árbitro con QR -->
+          <div class="collage-card">
+            <img src="img/tatami-display-arbitro.jpg" alt="SmartTV mostrando el marcador en vivo y árbitro de traje puntuando por celular">
+            <div class="collage-overlay>
+              <span class="collage-tag">Display & Jueces</span>
+              <div class="collage-title">SmartTV y Árbitro QR</div>
+              <div class="collage-desc">Puntuación instantánea sin cables directo a la pantalla del estadio</div>
+            </div>
+          </div>
+          
+          <!-- Pantalla 3: Laptop en Tatami con Casco Rojo -->
+          <div class="collage-card">
+            <img src="img/tatami-laptop-arena2.jpg" alt="Laptop en tatami con Control Arena 2 de SpirixTotal y casco rojo de combate">
+            <div class="collage-overlay>
+              <span class="collage-tag">Tatami Real</span>
+              <div class="collage-title">Control Arena en Tatami</div>
+              <div class="collage-desc">Mesa de juez y cronómetro al borde del área de combate</div>
+            </div>
+          </div>
+          
+          <!-- Pantalla 4: Pantalla Principal de Control Arena 1 -->
+          <div class="collage-card">
+            <img src="img/pantalla-control-arena1.jpg" alt="Pantalla de software SpirixTotal: Control Arena 1 con faltas, VAR y puntuación">
+            <div class="collage-overlay>
+              <span class="collage-tag">Software Nativo</span>
+              <div class="collage-title">Pantalla de Control Arena 1</div>
+              <div class="collage-desc">Motor integral de puntuación, control de VAR y gestión de jueces</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SIMULADOR INTERACTIVO DE TATAMI EN VIVO (PLAyGROUND)
+         ======================================================================== -->
+    <section id="simulador" class="simulator-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Experiencia Interactiva en Vivo</span>
+          <h2 class="section-title">Comprueba la inmediatez del sistema ahora mismo</h2>
+          <p class="section-subtitle">
+            Presiona los pulsadores del juez en el smartphone (izquierda) y observa cómo sube el puntaje de inmediato en la pantalla gigante de SmartTV del estadio (derecha).
+          </p>
+        </div>
+        
+        <div class="simulator-workspace">
+          <!-- Columna Izquierda: Celular del Juez (Móvil) -->
+          <div class="judge-device-mockup">
+            <div class="device-header">
+              <div class="device-title">
+                <span>📱</span>
+                <span>Juez de Esquina #1</span>
+              </div>
+              <span class="device-tag">Tatami 1</span>
+            </div>
+            
+            <div class="judge-corners-grid">
+              <!-- Esquina Roja -->
+              <div class="corner-box red">
+                <div class="corner-label">🔴 Rincón Rojo</div>
+                <div class="points-btn-grid">
+                  <button class="btn-point red" onclick="simAddPoint('red', 1)">
+                    +1 <span>Puño</span>
+                  </button>
+                  <button class="btn-point red" onclick="simAddPoint('red', 2)">
+                    +2 <span>Cabeza</span>
+                  </button>
+                  <button class="btn-point red" onclick="simAddPoint('red', 3)">
+                    +3 <span>Salto</span>
+                  </button>
+                  <button class="btn-point red" onclick="simAddPoint('red', 4)">
+                    +4 <span>Giro</span>
+                  </button>
+                </div>
+              </div>
+              
+              <!-- Esquina Azul -->
+              <div class="corner-box blue">
+                <div class="corner-label">🔵 Rincón Azul</div>
+                <div class="points-btn-grid">
+                  <button class="btn-point blue" onclick="simAddPoint('blue', 1)">
+                    +1 <span>Puño</span>
+                  </button>
+                  <button class="btn-point blue" onclick="simAddPoint('blue', 2)">
+                    +2 <span>Cabeza</span>
+                  </button>
+                  <button class="btn-point blue" onclick="simAddPoint('blue', 3)">
+                    +3 <span>Salto</span>
+                  </button>
+                  <button class="btn-point blue" onclick="simAddPoint('blue', 4)">
+                    +4 <span>Giro</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="judge-controls-bottom">
+              <button class="btn-aux" onclick="simAddFoul('red')">⚠️ Falta Roja</button>
+              <button class="btn-aux" onclick="simAddFoul('blue')">⚠️ Falta Azul</button>
+              <button class="btn-aux undy onclick="simUndoLast()">↩️ Deshacer Último Punto</button>
+            </div>
+          </div>
+          
+          <!-- Columna Derecha: Pantalla TV del estadio -->
+          <div class="stadium-screen-mockup">
+            <div class="screen-topbar">
+              <div class="screen-category>Área 1 — Final Masculino Cinturones Negros</div>
+              <div class="screen-live-tag">
+                <span class="status-dot-green"></span>
+                <span>EN VIVO (WiFi Local)</span>
+              </div>
+            </div>
+            
+            <div class="screen-scoreboard">
+              <!-- Competidor Rojo -->
+              <div class="competitor-card red">
+                <div class="comp-name">R. Rodríguez</div>
+                <div class="comp-club">Uruguay • Club Central</div>
+                <div id="sim-red-score" class="comp-score">0</div>
+                <div class="comp-fouls">
+                  <span id="sim-red-foul-1" class="foul-pip"></span>
+                  <span id="sim-red-foul-2" class="foul-pip"></span>
+                  <span id="sim-red-foul-3" class="foul-pip"></span>
+                </div>
+              </div>
+              
+              <!-- Cronómetro Central -->
+              <div class="screen-timer-box">
+                <div class="timer-round-label">ROUND 1</div>
+                <div id="sim-timer-digits" class="timer-digits paused">01:30</div>
+                <div class="timer-controls-row">
+                  <button id="sim-btn-timer-toggle" class="btn-timer-action" onclick="simToggleTimer()">Iniciar</button>
+                  <button id="sim-btn-timer-reset" class="btn-timer-action" onclick="simResetMatch()">Reset</button>
+                </div>
+              </div>
+              
+              <!-- Competidor Azul -->
+              <div class="competitor-card blue">
+                <div class="comp-name">M. Silva</div>
+                <div class="comp-club">Argentina • Team Do</div>
+                <div id="sim-blue-score" class="comp-score">0</div>
+                <div class="comp-fouls">
+                  <span id="sim-blue-foul-1" class="foul-pip"></span>
+                  <span id="sim-blue-foul-2" class="foul-pip"></span>
+                  <span id="sim-blue-foul-3" class="foul-pip"></span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="screen-bottom-bar">
+              <div>Display Inalámbrico de estadio — SpirixTotal 2.0</div>
+              <div id="sim-sound-toggle" class="sound-toggle-btn active" title="Activar/Desactivar sonidy>
+                <span>🔊</span>
+                <span class="sound-status-text">Sonido: ON</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECCIÓN DE BLINdaJE anTE ERRORES y FALLOS (ZERO-FAILURE)
+         ======================================================================== -->
+    <section id="resiliencia" class="resilience-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Ingeniería anti-Sabotaje</span>
+          <h2 class="section-title">¿Qué pasa si algo sale mal durante el torneo?</h2>
+          <p class="section-subtitle">
+            Un evento con cientos de atletas no puede detenerse. SpirixTotal está blindado contra los fallos más temidos por los organizadores:
+          </p>
+        </div>
+        
+        <div class="resilience-grid">
+          <div class="resilience-card">
+            <div class="resilience-icon">⚡</div>
+            <h3>Corte Total de Energía Eléctrica</h3>
+            <p>
+              El motor integrado <strong>SQLite WebAssembl&bull;/strong> ejecuta transacciones atómicas continuas. Si se corta la luz del estadio, al reencender la PC el torneo continúa exactamente en el <strong>segundo y punto exacto</strong> donde se apagó.
+            </p>
+            <span class="resilience-badge">Persistencia ACID</span>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">📡</div>
+            <h3>Caída o Saturación del WiFi</h3>
+            <p>
+              SpirixTotal no depende de Internet para operar. Corre en <strong>Lan cerrada</strong> con WebSockets y tecnología de deltas (<code>fast-json-patch</code>), transmitiendo micro-paquetes para no saturar jamás el router del recinto.
+            </p>
+            <span class="resilience-badge">100% Offline-First</span>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">🔋</div>
+            <h3>Celular de un Juez Agotado</h3>
+            <p>
+              Si un árbitro se queda sin batería en su teléfono, la mesa central genera un <strong>código QR de reemplazo en caliente en 5 segundos</strong>. Cualquier otro smartphone toma la votación de inmediato sin frenar el combate.
+            </p>
+            <span class="resilience-badge">Cambio en Caliente</span>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">🛡️</div>
+            <h3>Impugnaciones y Reclamos</h3>
+            <p>
+              Cada voto emitido se firma criptográficamente con <strong>HMAC SHA-256</strong> con marca de tiempo precisa al milisegundo. La mesa técnica cuenta con auditoría forense para verificar qué juez votó qué punto con certeza irrefutable.
+            </p>
+            <span class="resilience-badge">Auditoría HMAC</span>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">🎮</div>
+            <h3>Errores al Tocar la Pantalla</h3>
+            <p>
+              Soporte nativo para <strong>Gamepads (Joysticks USB y Bluetooth)</strong>. Los jueces puntúan por tacto físico con botones de consola mirando directamente a los peleadores sin desviar la mirada al móvil.
+            </p>
+            <span class="resilience-badge">Gamepad Plug & Pla&bull;/span>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">📺</div>
+            <h3>Rotura de Cables HDMI Largos</h3>
+            <p>
+              Elimina los costosos cables de 30 metros que siempre fallan o sufren tropiezos. El módulo <strong>Client-Displa&bull;/strong> permite que cualquier SmartTV o proyector con WiFi abra la URL del tatami y muestre el marcador gigante sin cables de video.
+            </p>
+            <span class="resilience-badge">Cero Cables HDMI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SELECTOR COMPLETO DE 10 DISCIPLINAS & FILOSOFÍA MODULAR
+         ======================================================================== -->
+    <section id="disciplinas" class="disciplines-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Versatilidad Marcial Universal</span>
+          <h2 class="section-title">Usted lo propone, Spirix lo Crea.</h2>
+          <p class="section-subtitle">
+            SpirixTotal no impone un reglamento cerrado. Cuenta con 9 perfiles predefinidos de federaciones internacionales y un <strong>motor 100% configurable</strong> para cualquier estilo marcial del mundo.
+          </p>
+        </div>
+        
+        <div class="disciplines-tabs">
+          <button class="tab-btn active" data-discipline="itf">Taekwon-Do ITF (Unión)</button>
+          <button class="tab-btn" data-discipline="citi">ITF (Weller)</button>
+          <button class="tab-btn" data-discipline="tradicional">ITF Tradicional</button>
+          <button class="tab-btn" data-discipline="wt">World Taekwondo (WT)</button>
+          <button class="tab-btn" data-discipline="kombat">Kombat Taekwondo</button>
+          <button class="tab-btn" data-discipline="karate">Karate WKF</button>
+          <button class="tab-btn" data-discipline="point">Point Fighting</button>
+          <button class="tab-btn" data-discipline="kickboxing">Kickboxing</button>
+          <button class="tab-btn" data-discipline="judy>Judo / BJJ</button>
+          <button class="tab-btn gold-btn" data-discipline="custom">⭐ Su Reglamento a Medida</button>
+        </div>
+        
+        <div class="discipline-content-box">
+          <div id="discipline-details-box" class="discipline-details">
+            <h3>Taekwon-Do ITF (Unión)</h3>
+            <p>
+              Reglamentación internacional con evaluación por criterios de Exactitud Técnica (40%), Ritmo (30%) y Potencia (30%). En combate: rounds de 2 minutos con tiempo médico centralizado y desempate automático.
+            </p>
+            <ul class="discipline-specs-list">
+              <li><span class="spec-icon">✓</span>1 Punto: Puño al cuerpo o cabeza / Patada al cuerpo</li>
+              <li><span class="spec-icon">✓</span>2 Puntos: Patada a la cabeza / Puño saltando</li>
+              <li><span class="spec-icon">✓</span>3 Puntos: Patada saltando a la cabeza / Giro aéreo</li>
+              <li><span class="spec-icon">✓</span>Formas / Tules por criterios o banderas 1vs1 oficial</li>
+            </ul>
+          </div>
+          
+          <div id="discipline-preset-box" class="discipline-preview-box">
+            <div class="preset-title">Configuración Automática en SpirixTotal</div>
+            <div class="preset-features-grid">
+              <div class="preset-feature-item">
+                <h5>Duración Asaltos</h5>
+                <p>2 Rounds de 2:00 min</p>
+              </div>
+              <div class="preset-feature-item">
+                <h5>Capacidad Simultánea</h5>
+                <p>Hasta 12 Áreas</p>
+              </div>
+              <div class="preset-feature-item">
+                <h5>Panel de Jueces</h5>
+                <p>4 o 5 Jueces + Mesa</p>
+              </div>
+              <div class="preset-feature-item">
+                <h5>Modalidad Voto</h5>
+                <p>Criterios / Banderas</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+          <div style="text-align: center; margin-top: 56px;">
+            <p style="color: #94a3b8; font-size: 1.05rem; margin-bottom: 16px;">SpirixTotal Multi-Sport: Toda la informaci&oacute;n comercial para organizadores</p>
+            <a href="docs/SpirixTotal_Dossier_Tecnico.html" target="_blank" class="btn-cloud-access" style="padding: 14px 32px; font-size: 1.1rem;">
+              <span>&#128196;</span>
+              <span>Abrir Dossier T&eacute;cnico Interactivo</span>
+            </a>
+          </div>
+        </div>
+    </section>
+
+    <!-- ========================================================================
+         GALERÍA DE EVIDENCIA REAL (CON PROTECCIÓN LEGAL DE ROSTROS)
+         ======================================================================== -->
+    <section id="galeria-estadiy class="gallery-section">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Testimonio Visual Auténtico</span>
+          <h2 class="section-title">El sistema operando en campeonatos oficiales</h2>
+          
+          <div class="privacy-legal-notice">
+            <span>🛡️</span>
+            <span>Imágenes reales de torneos — Rostros protegidos legalmente preservando la autenticidad del evento.</span>
+          </div>
+          
+          <p class="section-subtitle">
+            Fotografías directas de estadios y tatamis en torneos oficiales. Sin maquetas ni renders ficticios: tecnología real en acción.
+          </p>
+        </div>
+        
+        <div class="gallery-grid">
+          <!-- Foto Grande: Pantalla de Control Principal Arena 1 -->
+          <div class="gallery-item col-8">
+            <img src="img/pantalla-control-arena1.jpg" alt="Pantalla de control central de SpirixTotal operando en vivy>
+            <div class="gallery-caption">
+              <h4>Consola de Control Central: Arena 1</h4>
+              <p>Marcador oficial, cronómetro a décimas, tarjetas de jueces J1-J4, descalificaciones y control instantáneo de VAR.</p>
+            </div>
+          </div>
+          
+          <!-- Foto: Tatami Laptop con Casco Rojo -->
+          <div class="gallery-item col-4">
+            <img src="img/tatami-laptop-arena2.jpg" alt="Laptop en tatami con sistema de cronómetro y casco rojo de combate">
+            <div class="gallery-caption">
+              <h4>Mesa de Tatami: Control Arena 2</h4>
+              <p>Terminal al borde del área de combate operando sin cables ni retraso.</p>
+            </div>
+          </div>
+          
+          <!-- Foto: Votación de Parejas -->
+          <div class="gallery-item col-4-b">
+            <img src="img/pantalla-votacion-parejas.jpg" alt="Pantalla de votación directa Parejas Rojo vs Azul">
+            <div class="gallery-caption">
+              <h4>Votación de Parejas en Vivo</h4>
+              <p>Módulo para combates o formas por parejas con votación simultánea de jueces.</p>
+            </div>
+          </div>
+          
+          <!-- Foto: Display SmartTV y Árbitro QR -->
+          <div class="gallery-item col-4-c">
+            <img src="img/tatami-display-arbitro.jpg" alt="SmartTV transmitiendo los resultados del combate en vivo y árbitro con móvil">
+            <div class="gallery-caption">
+              <h4>SmartTV y Juez Móvil QR</h4>
+              <p>Pantalla visible a tribunas y puntuación por celular sin instalar aplicaciones.</p>
+            </div>
+          </div>
+          
+          <!-- Foto: Módulo de Formas -->
+          <div class="gallery-item col-4-d">
+            <img src="img/pantalla-esperando-formas.jpg" alt="Pantalla de software SpirixTotal: Módulo Oficial de Formas">
+            <div class="gallery-caption">
+              <h4>Módulo Oficial de Formas</h4>
+              <p>Evaluación de Poomsae y Tul con soporte para paneles de múltiples jueces.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         MÓDULOS OFICIALES DE LA PLATAFORMA
+         ======================================================================== -->
+    <section id="modulos" class="resilience-section" style="background: rgba(12, 18, 32, 0.4);">
+      <div class="container">
+        <div class="section-head">
+          <span class="section-tag">Ecosistema Integral</span>
+          <h2 class="section-title">Todo lo que necesita la mesa técnica</h2>
+          <p class="section-subtitle">
+            Módulos nativos diseñados para reducir al mínimo el tiempo entre combates y profesionalizar el evento.
+          </p>
+        </div>
+        
+        <div class="resilience-grid">
+          <div class="resilience-card">
+            <div class="resilience-icon">🔀</div>
+            <h3>Motor Matemático de Llaves</h3>
+            <p>
+              Algoritmo certificado para <strong>Eliminación Simple, Doble con Repechaje, Round Robin y Pools</strong>. Probado con hasta 152 competidores por categoría con cálculo y balanceo automático de Byes.
+            </p>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">🎥</div>
+            <h3>Transmisión OBS & Overlays TV</h3>
+            <p>
+              Generador nativo de gráficos en vivo con fondo <strong>Chroma Ke&bull;/strong> (pantalla verde). Conecta la mesa a OBS Studio y transmite combates en youTube o Twitch con marcadores televisivos en vivo.
+            </p>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">📢</div>
+            <h3>Asistente de Voz (Llamador TTS)</h3>
+            <p>
+              Conecta un parlante a la PC. El sistema anunciará automáticamente por voz sintética el nombre de los atletas y su área cada vez que avance una llave: <em>"Área 2: Próximo combate Pérez vs Gómez"</em>.
+            </p>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">📲</div>
+            <h3>Live Tracker para el Público (PWA)</h3>
+            <p>
+              Los padres y espectadores en las tribunas escanean un QR con su celular y siguen en tiempo real qué combates están transcurriendo y a qué hora compiten sus hijos, aliviando las consultas a la mesa.
+            </p>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">📥</div>
+            <h3>Importación Excel y Exportación PDF</h3>
+            <p>
+              Carga planillas completas de competidores desde archivos Excel (.xlsx/.csv) sin tipeo manual. Al finalizar, exporta diplomas y llaves completas en formato PDF para firmas oficiales.
+            </p>
+          </div>
+          
+          <div class="resilience-card">
+            <div class="resilience-icon">☁️</div>
+            <h3>Puente Híbrido con SpirixCloud</h3>
+            <p>
+              Recibe las inscripciones previas de los dojos vía web desde la nube. Al llegar al estadio, SpirixTotal local descarga toda la nómina con 1 solo clic y genera las llaves automáticamente sin conexión.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         COTIZADOR RÁPIDO & EXPLICACIÓN DEL FLUJO SPIRIXCLOUD
+         ======================================================================== -->
+    <section id="cotizador" class="contact-section">
+      <div class="container">
+        <div class="contact-card">
+          <div class="contact-info-col">
+            <h3>Organiza tu próximo torneo al nivel de los mejores</h3>
+            <p>
+              Tanto para un torneo escolar de 2 áreas como para un campeonato panamericano o mundial de 12 tatamis, SpirixTotal te brinda la infraestructura para que no haya margen de error.
+            </p>
+            
+            <!-- CAJA EXPLICATIVA DEL FLUJO SPIRIXCLOUD -->
+            <div class="cloud-flow-explainer">
+              <h4><span>☁️</span> ¿Cómo funciona el Portal de Inscripciones SpirixCloud?</h4>
+              <ul class="cloud-flow-steps">
+                <li><strong>1. Venta y Activación:</strong> Al adquirir tu licencia, tu torneo se activa en la nube y se te genera un Código Único de Torneo (ej: <code>COPA-2026</code>).</li>
+                <li><strong>2. Enlace Exclusivo para Escuelas:</strong> Envías a los profesores el enlace directo con tu código para que inscriban atletas y suban comprobantes de pago.</li>
+                <li><strong>3. Sincronización en el estadio:</strong> El día del torneo abres SpirixTotal en la PC de la mesa y descargas toda la nómina con 1 clic sin necesidad de internet continuo.</li>
+              </ul>
+            </div>
+            
+            <ul class="contact-perks-list">
+              <li><span>✓</span>Licencias adaptadas por cantidad de áreas y días de torneo.</li>
+              <li><span>✓</span>Capacitación de operadores y soporte técnico el día del evento.</li>
+              <li><span>✓</span>Compatibilidad con cualquier computadora con Windows 10/11.</li>
+            </ul>
+          </div>
+          
+          <div class="calculator-col">
+            <div class="calc-title">
+              <span>🧮</span>
+              <span>Calculadora de Requerimientos</span>
+            </div>
+            
+            <div class="calc-group">
+              <label>Cantidad de Áreas de Tatami Simultáneas</label>
+              <div class="calc-slider-wrap">
+                <input type="range" id="calc-areas-slider" class="calc-slider" min="1" max="12" value="2">
+                <span id="calc-areas-val" class="slider-val-badge">2</span>
+              </div>
+            </div>
+            
+            <div class="calc-group">
+              <label>Modalidad Principal</label>
+              <select id="calc-modality class="calc-select">
+                <option value="Combate y Formas">Combate y Formas (Completo)</option>
+                <option value="Sólo Combate">Sólo Combate (Kyorugi / Kumite)</option>
+                <option value="Sólo Formas / Poomsae">Sólo Formas / Poomsae / Tuls</option>
+                <option value="Multi-Disciplina">Multi-Disciplina (ITF, Karate, Kick)</option>
+                <option value="Reglamento a Medida">Reglamento Personalizado (A Medida)</option>
+              </select>
+            </div>
+            
+            <div class="calc-group">
+              <label>Duración del Evento</label>
+              <select id="calc-days" class="calc-select">
+                <option value="1 Día">1 Jornada (Sábado o Domingo)</option>
+                <option value="2 Días">2 Días de Campeonato</option>
+                <option value="3 o más Días">3 Días o más (Panamericano / Open)</option>
+              </select>
+            </div>
+            
+            <a id="btn-email-quote" href="mailto:spirixtotal@gmail.com?subject=Solicitud%20de%20Datos%20y%20Presupuesto&body=Hola,%20deseo%20solicitar%20informaci&oacute;n%20y%20datos%20para%20mi%20torneo." class="btn-secondary" style="margin-top: 24px;">
+                <span>✉️</span>
+                <span>Solicitar Datos por Correo</span>
+              </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       MOdaL DE INGRESO A SPIRIXCLOUD (CON CÓDIGO DE TORNEO)
+       ======================================================================== -->
+  <div id="cloud-access-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:2000; align-items:center; justify-content:center; backdrop-filter:blur(8px);">
+    <div style="background:#0f172a; border:1px solid #38bdf8; border-radius:18px; padding:32px; max-width:480px; width:90%; box-shadow:0 20px 60px rgba(0,0,0,0.9); text-align:center; position:relative;">
+      <button onclick="closeCloudModal()" style="position:absolute; top:16px; right:16px; color:#94a3b8; font-size:1.4rem; cursor:pointer;">&times;</button>
+      
+      <div style="font-size:2.4rem; margin-bottom:8px;">☁️</div>
+      <h3 style="color:#38bdf8; font-size:1.4rem; margin-bottom:10px;">Portal de Instructores SpirixCloud</h3>
+      <p style="color:#94a3b8; font-size:0.92rem; line-height:1.5; margin-bottom:20px;">
+        Para inscribir atletas a un campeonato, ingrese el <strong>Código de Torneo</strong> proporcionado por el organizador de su evento:
+      </p>
+      
+      <input type="text" id="modal-tournament-slug" placeholder="Ejemplo: COPA-URUGUAy-2026" style="width:100%; padding:14px; background:#020617; border:1px solid #334155; border-radius:8px; color:#ffffff; font-size:1rem; font-family:monospace; text-align:center; text-transform:uppercase; margin-bottom:16px;">
+      
+      <button onclick="window.location.href='https://spirixcloud-server.onrender.com/?t=' + (document.getElementById('modal-tournament-slug').value.trim() || 'spirix')" class="btn-primary style="width:100%; justify-content:center; padding:14px;">
+        <span>Ingresar a Mi Torneo Activo</span>
+      </button>
+      
+      <p style="color:#64748b; font-size:0.78rem; margin-top:16px;">
+        ¿Aún no tienes código de torneo? Solicita al comit&eacute;é organizador de tu evento el enlace de invitación.
+      </p>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       PIE DE PÁGINA
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <img src="img/logo-spirixtotal.png" alt="SpirixTotal" style="height: 48px;">
+          <p>
+            Plataforma integral de gestión deportiva, cronometraje y puntuación electrónica de torneos. "El corazón de tu torneo está en tus competidores."
+          </p>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Ecosistema</h4>
+          <ul class="footer-links">
+            <li><a href="#simulador">Simulador de Tatami</a></li>
+            <li><a href="#resiliencia">Blindaje ante Fallos</a></li>
+            <li><a href="#disciplinas">10 Disciplinas Deportivas</a></li>
+            <li><a href="#galeria-estadiy>Fotos en Torneos</a></li>
+            <li><a href="https://spirixcloud-server.onrender.com" onclick="openCloudModal(event)">Portal SpirixCloud (Inscripciones)</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Contacto Oficial</h4>
+          <ul class="footer-links">
+            <li><a href="docs/SpirixTotal_Dossier_Tecnico.html" target="_blank">📄 Dossier Técnico</a></li>
+            <li><a href="mailto:spirixtotal@gmail.com">✉️ spirixtotal@gmail.com</a></li>
+            <li><a href="mailto:spirixtotal1@gmail.com">✉️ spirixtotal1@gmail.com</a></li>
+            <li><a href="https://instagram.com/spirixtotal" target="_blank">📷 Instagram: @spirixtotal</a></li>
+            <li><a href="https://instagram.com/spirixtotal1" target="_blank">📷 Instagram: @spirixtotal1</a></li>
+            <li><a href="https://facebook.com/spirixtotal" target="_blank">📘 Facebook: @spirixtotal</a></li>
+          </ul></div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>&copy; 2026 SpirixTotal. Todos los derechos reservados. "Usted lo propone, Spirix lo Crea."</div>
+        <div>Tecnología Offline-First • Lan Ultra-Baja Latencia</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/arena-simulator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
