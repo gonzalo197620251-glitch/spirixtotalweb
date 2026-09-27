@@ -1468,8 +1468,17 @@ button {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (Móviles y Tablets)
+   RESPONSIVE DESIGN (Moviles y Tablets)
    ========================================================================== */
+
+/* 1. Reset Global Anti-Desbordamiento */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden !important;
+  margin: 0;
+  padding: 0;
+}
+
 @media (max-width: 1200px) {
   .hero-collage-grid {
     grid-template-columns: 1fr 1fr;
@@ -1500,160 +1509,75 @@ button {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  /* Cabecera y Grilla flex para que todo caiga en su lugar sin desbordar */
+  .site-header {
+    height: auto !important;
+    padding: 15px 0;
+  }
+  .site-header .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Logo se achica */
+  .hero-main-logo {
+    width: 85vw !important;
+    max-width: 400px !important;
+  }
+
+  /* Hamburger Toggle */
+  .mobile-toggle {
+    display: block;
+    order: 2;
+  }
+
+  /* Menu de Enlaces (Oculto hasta apretar toggle) */
   .nav-menu {
+    display: none;
+    width: 100%;
+    order: 3;
+    flex-direction: column;
+    background: rgba(10, 15, 30, 0.95);
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .nav-menu.active {
+    display: flex !important;
+  }
+
+  /* Botones de accion (Portal y Cotizar) */
+  .header-actions {
+    display: flex !important;
+    width: 100%;
+    order: 4;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  /* Ocultar texto largo, dejar iconos */
+  .btn-cloud-access span:nth-child(2),
+  .btn-cta-nav span:nth-child(2) {
     display: none;
   }
   
-  .mobile-toggle {
-    display: block;
-  }
-  
-  .hero-collage-grid {
-    grid-template-columns: 1fr;
-  }
-  
-    .hero-main-logo {
-    max-width: 600px;
-    width: 88vw;
-  }
   .resilience-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
 
-/* Mobile Nav Menu Active State */
-.nav-menu.active {
-  display: flex !important;
-  flex-direction: column;
-  position: absolute;
-  top: 80px;
-  left: 0;
-  width: 100%;
-  background: rgba(10, 15, 30, 0.95);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
-  z-index: 1000;
-  text-align: center;
-}
-.nav-menu.active a {
-  margin: 10px 0;
-  font-size: 1.1rem;
-}
-
-
-
-
-/* === SUPER FIX RESPONSIVE & GOOGLE TRANSLATE === */
-body {
-  overflow-x: hidden;
-  width: 100%;
-}
-
-.site-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-@media (max-width: 768px) {
-  .header-actions {
-    display: none; /* Hide top buttons on mobile to save space */
-  }
-  
-  .nav-menu.active .header-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    gap: 15px;
-  }
-  
-  .hero-main-logo {
-    max-width: 80vw !important;
-  }
-  
-  h1, h2, h3 {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
-}
-
-/* Ocultar barra superior de Google Translate */
+/* ==========================================================================
+   ESTILOS DE GOOGLE TRANSLATE (BLINDAJE DARK THEME)
+   ========================================================================== */
 body { top: 0 !important; }
-.skiptranslate iframe { display: none !important; }
-#goog-gt-tt { display: none !important; }
-.goog-te-gadget { color: transparent !important; font-size: 0; }
-.goog-te-gadget .goog-te-combo { 
-    margin: 0; 
-    padding: 8px 12px; 
-    border-radius: 8px; 
-    background: #0f172a; 
-    color: #38bdf8; 
-    border: 1px solid #38bdf8; 
-    font-family: inherit;
-    font-size: 0.9rem;
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
-}
-.goog-te-gadget .goog-te-combo option {
-    background: #0f172a;
-    color: #fff;
-    padding: 10px;
-}
-
-/* =========================================
-   ROBUST MOBILE FIXES
-   ========================================= */
-body {
-  overflow-x: hidden !important;
-  max-width: 100vw;
-}
-
-@media (max-width: 900px) {
-  .header-actions {
-    width: 100%;
-    justify-content: center;
-    margin-top: 10px;
-    padding-bottom: 10px;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .site-header {
-    height: auto !important;
-    padding: 10px 0;
-  }
-  
-  .btn-cloud-access, .btn-cta-nav {
-    padding: 8px 12px;
-    font-size: 0.85rem;
-  }
-  
-  #google_translate_element {
-    margin-right: 0 !important;
-    margin-bottom: 5px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .goog-te-combo {
-    width: 90% !important;
-    text-align: center;
-  }
-}
-
-/* =========================================
-   BRUTAL GOOGLE TRANSLATE RESET
-   ========================================= */
-#google_translate_element {
-  overflow: hidden;
-  border-radius: 8px;
-}
+/* removed iframe hide to prevent vanishing widget */
+/* removed tooltip hide */
 
 .goog-te-gadget {
   background-color: transparent !important;
@@ -1663,7 +1587,6 @@ body {
   padding: 0 !important;
   margin: 0 !important;
 }
-
 .goog-te-gadget img {
   display: none !important;
 }
@@ -1673,20 +1596,16 @@ body {
   color: #38bdf8 !important;
   border: 1px solid rgba(56, 189, 248, 0.5) !important;
   border-radius: 6px !important;
-  padding: 8px 12px !important;
+  padding: 8px 10px !important;
   font-family: 'Outfit', sans-serif !important;
   font-size: 14px !important;
   font-weight: 600 !important;
   cursor: pointer;
   outline: none !important;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5) !important;
-  appearance: none;
   -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
 }
-
-.goog-logo-link {
-  display: none !important;
-}
-.goog-te-gadget .goog-te-combo {
-  margin: 0 !important;
-}
+.goog-logo-link { display: none !important; }
