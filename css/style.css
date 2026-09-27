@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    SPIRIXTOTAL 2.0 — HOJA DE ESTILOS OFICIAL DE ALTO RENDIMIENTO
    Estilo: Dark Stadium / Cyber-Athletic Pro (Versión 4 Full-Width Hero)
    ========================================================================== */
@@ -131,7 +131,7 @@ button {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 14px;
   flex-wrap: nowrap;
 }
 
@@ -1531,7 +1531,7 @@ body {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1150px) {
   /* Cabecera en móvil: altura auto y flex-wrap */
   .site-header {
     height: auto !important;
