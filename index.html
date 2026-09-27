@@ -1,4 +1,4 @@
-﻿<!DOCTyPE html>
+<!DOCTyPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -43,7 +43,21 @@
       </nav>
       
       <div class="header-actions">
-          <div id="google_translate_element" style="margin-right: 15px;"></div>
+          <!-- Selector de Idioma Personalizado -->
+          <div class="lang-selector-wrap">
+            <select id="custom-lang-select" class="custom-lang-select" onchange="doTranslate(this.value)" title="Seleccionar idioma">
+              <option value="es">🌐 Español</option>
+              <option value="en">🇬🇧 English</option>
+              <option value="pt">🇧🇷 Português</option>
+              <option value="fr">🇫🇷 Français</option>
+              <option value="de">🇩🇪 Deutsch</option>
+              <option value="ru">🇷🇺 Русский</option>
+              <option value="ko">🇰🇷 한국어</option>
+              <option value="ja">🇯🇵 日本語</option>
+            </select>
+          </div>
+          <!-- div oculto requerido por Google Translate -->
+          <div id="google_translate_element" style="display:none;"></div>
         <!-- Acceso ordenado a inscripciones con explicación de código -->
         <a href="https://spirixcloud-server.onrender.com" onclick="openCloudModal(event)" class="btn-cloud-access" title="Acceso a Inscripciones Cloud para Maestros">
           <span>☁️</span>
@@ -55,7 +69,7 @@
           <span>Cotizar Torneo</span>
         </a>
         
-        <button class="mobile-toggle" onclick="toggleNav()" aria-label="Abrir menú">☰</button>
+        <button class="mobile-toggle" aria-label="Abrir menú">☰</button>
       </div>
     </div>
   </header>
@@ -67,12 +81,12 @@
     <section class="hero-fullwidth-section">
       <!-- Fondo Dinámico: Collage Panorámico de Torneos Reales -->
       <div class="hero-backdrop-collage" aria-hidden="true"></div>
-      <div class="hero-backdrop-overlay aria-hidden="true"></div>
+      <div class="hero-backdrop-overlay" aria-hidden="true"></div>
 
       <div class="container">
         <!-- LOGO OFICIAL TRanSPARENTE, GRanDE y COMERCIALMENTE DESEABLE -->
         <div class="hero-main-logo-wrap">
-          <img src="img/logo-spirixtotal-transparent.png" alt="SpirixTotal — El corazón de tu torneo está en tus competidores" class="hero-main-logy>
+          <img src="img/logo-spirixtotal-transparent.png" alt="SpirixTotal — El corazón de tu torneo está en tus competidores" class="hero-main-logo">
         </div>
         
         <h1 class="hero-headline">
@@ -457,7 +471,7 @@
     <!-- ========================================================================
          GALERÍA DE EVIDENCIA REAL (CON PROTECCIÓN LEGAL DE ROSTROS)
          ======================================================================== -->
-    <section id="galeria-estadiy class="gallery-section">
+    <section id="galeria-estadio" class="gallery-section">
       <div class="container">
         <div class="section-head">
           <span class="section-tag">Testimonio Visual Auténtico</span>
@@ -632,7 +646,7 @@
             
             <div class="calc-group">
               <label>Modalidad Principal</label>
-              <select id="calc-modality class="calc-select">
+              <select id="calc-modality" class="calc-select">
                 <option value="Combate y Formas">Combate y Formas (Completo)</option>
                 <option value="Sólo Combate">Sólo Combate (Kyorugi / Kumite)</option>
                 <option value="Sólo Formas / Poomsae">Sólo Formas / Poomsae / Tuls</option>
@@ -741,15 +755,41 @@
 
   <script src="js/arena-simulator.js"></script>
   <script src="js/app.js"></script>
-  <!-- Google Translate -->
+  <!-- Google Translate Backend (oculto) -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'es',
-        includedLanguages: 'en,pt,fr,ko,ja,de,ru', // English, Portuguese, French, Korean, Japanese
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        includedLanguages: 'es,en,pt,fr,de,ru,ko,ja',
+        autoDisplay: false
       }, 'google_translate_element');
     }
+
+    // Función que dispara la traducción desde nuestro select personalizado
+    function doTranslate(lang) {
+      if (lang === 'es') {
+        // Volver al español: borrar cookie y recargar
+        var expires = new Date(0).toUTCString();
+        document.cookie = 'googtrans=; expires=' + expires + '; path=/';
+        document.cookie = 'googtrans=; expires=' + expires + '; domain=' + window.location.hostname + '; path=/';
+        window.location.reload();
+        return;
+      }
+      // Establecer el idioma via cookie de Google Translate
+      var cookieVal = '/es/' + lang;
+      document.cookie = 'googtrans=' + cookieVal + '; path=/';
+      document.cookie = 'googtrans=' + cookieVal + '; domain=' + window.location.hostname + '; path=/';
+      window.location.reload();
+    }
+
+    // Al cargar la página, sincronizar el select con el idioma activo
+    window.addEventListener('load', function() {
+      var match = document.cookie.match(/googtrans=\/es\/([a-z]{2,4})/);
+      if (match && match[1]) {
+        var sel = document.getElementById('custom-lang-select');
+        if (sel) sel.value = match[1];
+      }
+    });
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 

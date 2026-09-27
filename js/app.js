@@ -1,4 +1,4 @@
-﻿/**
+/**
  * SPIRIXTOTAL 2.0 — APP.JS (V4)
  * Motor Multi-Disciplina Completo (10 disciplinas oficiales), Cotizador y Modales
  */
@@ -201,22 +201,35 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   updateEmailLink();
 
-  // 3. Menú Móvil
+  // 3. Menú Móvil — implementación única y limpia
   const mobileToggle = document.querySelector('.mobile-toggle');
   const navMenu = document.querySelector('.nav-menu');
+
   if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      const isVisible = navMenu.style.display === 'flex';
-      navMenu.style.display = isVisible ? 'none' : 'flex';
-      if (!isVisible) {
-        navMenu.style.flexDirection = 'column';
-        navMenu.style.position = 'absolute';
-        navMenu.style.top = '80px';
-        navMenu.style.left = '0';
-        navMenu.style.right = '0';
-        navMenu.style.background = 'rgba(5, 8, 17, 0.98)';
-        navMenu.style.padding = '24px';
-        navMenu.style.borderBottom = '1px solid rgba(255,255,255,0.1)';
+    // Abrir/cerrar al pulsar el botón hamburguesa
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navMenu.classList.contains('active');
+      navMenu.classList.toggle('active');
+      mobileToggle.textContent = isOpen ? '☰' : '✕';
+      mobileToggle.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+    });
+
+    // Cerrar al pulsar un enlace del menú
+    navMenu.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileToggle.textContent = '☰';
+        mobileToggle.setAttribute('aria-label', 'Abrir menú');
+      });
+    });
+
+    // Cerrar al pulsar fuera del menú
+    document.addEventListener('click', (e) => {
+      if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        mobileToggle.textContent = '☰';
+        mobileToggle.setAttribute('aria-label', 'Abrir menú');
       }
     });
   }
@@ -245,9 +258,3 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) modal.style.display = 'none';
   };
 });
-
-// Mobile Navigation Toggle
-function toggleNav() {
-  const menu = document.querySelector('.nav-menu');
-  menu.classList.toggle('active');
-}
