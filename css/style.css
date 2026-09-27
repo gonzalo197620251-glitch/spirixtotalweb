@@ -1624,6 +1624,39 @@ body {
   .section-title {
     font-size: 1.8rem !important;
   }
+
+  /* Ajuste perfecto del Simulador en Móviles (Teclado y Scoreboard) */
+  .simulator-workspace {
+    padding: 16px 10px !important;
+    gap: 20px !important;
+  }
+  .judge-device-mockup {
+    padding: 12px 8px !important;
+    border-radius: 18px !important;
+  }
+  .judge-corners-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .judge-controls-bottom {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+  .stadium-screen-mockup {
+    padding: 12px 8px !important;
+  }
+  .screen-scoreboard {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+  }
+  .screen-timer-box {
+    order: -1; /* Cronómetro arriba en teléfonos */
+  }
+  .competitor-card {
+    width: 100% !important;
+    padding: 14px 10px !important;
+  }
 }
 
 /* Limpieza del contenedor interno de Google (sólo el div oculto) */
