@@ -43,6 +43,7 @@
       </nav>
       
       <div class="header-actions">
+          <div id="google_translate_element" style="margin-right: 15px;"></div>
         <!-- Acceso ordenado a inscripciones con explicación de código -->
         <a href="https://spirixcloud-server.onrender.com" onclick="openCloudModal(event)" class="btn-cloud-access" title="Acceso a Inscripciones Cloud para Maestros">
           <span>☁️</span>
@@ -54,7 +55,7 @@
           <span>Cotizar Torneo</span>
         </a>
         
-        <button class="mobile-toggle" aria-label="Abrir menú">☰</button>
+        <button class="mobile-toggle" onclick="toggleNav()" aria-label="Abrir menú">☰</button>
       </div>
     </div>
   </header>
@@ -745,7 +746,7 @@
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'es',
-        includedLanguages: 'en,pt,fr,ko,ja', // English, Portuguese, French, Korean, Japanese
+        includedLanguages: 'en,pt,fr,ko,ja,de,ru', // English, Portuguese, French, Korean, Japanese
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
     }
