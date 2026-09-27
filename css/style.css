@@ -320,14 +320,33 @@ button {
   position: relative;
 }
 
-.hero-main-logo {
-  max-width: 600px;
-  width: 88vw;
-  height: auto;
-  margin: 0 auto;
-  opacity: 0.88;
-  filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.6)) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.9));
-  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+  .hero-main-logo {
+    max-width: 600px;
+    width: 88vw;
+  }
+  .resilience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile Nav Menu Active State */
+.nav-menu.active {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 15, 30, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  z-index: 1000;
+  text-align: center;
+}
+.nav-menu.active a {
+  margin: 10px 0;
+  font-size: 1.1rem;
 }
 
 .hero-main-logo:hover {
@@ -1229,6 +1248,16 @@ button {
   margin: 0;
 }
 
+.resilience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+.resilience-card {
+  display: flex;
+  flex-direction: column;
+}
 /* ==========================================================================
    COTIZADOR RÁPIDO & EXPLICACIÓN DEL FLUJO SPIRIXCLOUD
    ========================================================================== */
@@ -1484,14 +1513,40 @@ button {
     grid-template-columns: 1fr;
   }
   
-  .hero-main-logo {
-  max-width: 600px;
-  width: 88vw;
-  height: auto;
-  margin: 0 auto;
-  opacity: 0.88;
-  filter: drop-shadow(0 0 35px rgba(0, 210, 255, 0.6)) drop-shadow(0 12px 28px rgba(0, 0, 0, 0.9));
-  transition: transform 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
+    .hero-main-logo {
+    max-width: 600px;
+    width: 88vw;
+  }
+  .resilience-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile Nav Menu Active State */
+.nav-menu.active {
+  display: flex !important;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background: rgba(10, 15, 30, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  z-index: 1000;
+  text-align: center;
+}
+.nav-menu.active a {
+  margin: 10px 0;
+  font-size: 1.1rem;
 }
 
 
+
+/* Ocultar barra superior de Google Translate */
+body { top: 0 !important; }
+.skiptranslate iframe { display: none !important; }
+#goog-gt-tt { display: none !important; }
+.goog-te-gadget { color: transparent !important; font-size: 0; }
+.goog-te-gadget .goog-te-combo { margin: 0; padding: 4px 8px; border-radius: 4px; background: rgba(0,0,0,0.5); color: #fff; border: 1px solid rgba(255,255,255,0.2); }

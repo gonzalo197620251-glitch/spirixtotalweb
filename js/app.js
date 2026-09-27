@@ -245,3 +245,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) modal.style.display = 'none';
   };
 });
+
+// Mobile Navigation Toggle
+function toggleNav() {
+  const menu = document.querySelector('.nav-menu');
+  menu.classList.toggle('active');
+}

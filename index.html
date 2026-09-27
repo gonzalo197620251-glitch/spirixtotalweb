@@ -98,12 +98,12 @@
         </div>
         
         <div class="hero-cta-group">
-          <a href="#simulador" class="btn-primary>
+          <a href="#simulador" class="btn-primary">
             <span>🎮</span>
             <span>Probar Tatami Interactivo</span>
           </a>
 
-          <a href="#evidencia" class="btn-secondary>
+          <a href="#evidencia" class="btn-secondary">
             <span>📷</span>
             <span>Ver Pantallas y Tatamis Reales</span>
           </a>
@@ -113,7 +113,7 @@
               <span>Consultar por Correo</span>
             </a>
           
-          <a href="docs/SpirixTotal_Dossier_Tecnico.html" target="_blank" class="btn-secondary>
+          <a href="docs/SpirixTotal_Dossier_Tecnico.html" target="_blank" class="btn-secondary">
             <span>📄</span>
             <span>Dossier T&eacute;cnico</span>
           </a>
@@ -674,9 +674,20 @@
       
       <input type="text" id="modal-tournament-slug" placeholder="Ejemplo: COPA-URUGUAy-2026" style="width:100%; padding:14px; background:#020617; border:1px solid #334155; border-radius:8px; color:#ffffff; font-size:1rem; font-family:monospace; text-align:center; text-transform:uppercase; margin-bottom:16px;">
       
-      <button onclick="window.location.href='https://spirixcloud-server.onrender.com/?t=' + (document.getElementById('modal-tournament-slug').value.trim() || 'spirix')" class="btn-primary style="width:100%; justify-content:center; padding:14px;">
+      <button onclick="handleCloudAccess()" class="btn-primary" style="width:100%; justify-content:center; padding:14px;">
         <span>Ingresar a Mi Torneo Activo</span>
       </button>
+
+      <script>
+        function handleCloudAccess() {
+          const code = document.getElementById('modal-tournament-slug').value.trim();
+          if (!code) {
+            alert('Por favor, ingresa el C\u00f3digo de Torneo para continuar.');
+            return;
+          }
+          window.location.href = 'https://spirixcloud.netlify.app/?t=' + encodeURIComponent(code);
+        }
+      </script>
       
       <p style="color:#64748b; font-size:0.78rem; margin-top:16px;">
         ¿Aún no tienes código de torneo? Solicita al comit&eacute;é organizador de tu evento el enlace de invitación.
@@ -703,7 +714,7 @@
             <li><a href="#simulador">Simulador de Tatami</a></li>
             <li><a href="#resiliencia">Blindaje ante Fallos</a></li>
             <li><a href="#disciplinas">10 Disciplinas Deportivas</a></li>
-            <li><a href="#galeria-estadiy>Fotos en Torneos</a></li>
+            <li><a href="#galeria-estadio">Fotos en Torneos</a></li>
             <li><a href="https://spirixcloud-server.onrender.com" onclick="openCloudModal(event)">Portal SpirixCloud (Inscripciones)</a></li>
           </ul>
         </div>
@@ -729,6 +740,18 @@
 
   <script src="js/arena-simulator.js"></script>
   <script src="js/app.js"></script>
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'en,pt,fr,ko,ja', // English, Portuguese, French, Korean, Japanese
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
 
