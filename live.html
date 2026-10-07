@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPIRIXTOTAL - Centro de Estadísticas, Medallero y Analítica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="analytics.css">
+  <style>
+    /* TABS */
+    .tab-nav {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #334155;
+      padding-bottom: 10px;
+    }
+    .tab-btn {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #475569;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      border-color: #38bdf8;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    /* LIVE BRACKETS VIEW */
+    .search-box { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; font-size: 15px; background: #0f172a; color: white; margin-bottom: 20px; box-sizing: border-box; }
+    .category-card { background: #0f172a; border: 1px solid #334155; border-radius: 12px; padding: 16px; margin-bottom: 20px; }
+    .cat-title { font-size: 17px; font-weight: 800; color: #38bdf8; margin-bottom: 12px; }
+    .match-box { background: #1e293b; border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #475569; font-size: 14px; }
+    .match-box.finished { border-left-color: #22c55e; }
+    .competitor { font-size: 14px; font-weight: 600; }
+    .winner { color: #facc15; font-weight: 800; }
+    .vs { color: #94a3b8; font-size: 12px; margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+  <div class="analytics-container">
+    
+    <!-- TOP NAVBAR -->
+    <header class="analytics-navbar">
+      <div class="nav-brand">
+        <span class="brand-badge">SPIRIX</span>
+        <h1 class="brand-title">CENTRO OFICIAL DE RESULTADOS Y ANALÍTICA</h1>
+      </div>
+      <div class="nav-controls">
+        <a href="/" class="btn-action" style="background:#334155; text-decoration:none;">⬅ Volver al Sistema</a>
+        <button class="btn-action btn-print" onclick="printAnalyticsReport()">🖨️ Descargar Reporte PDF</button>
+      </div>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchView('analytics')">📊 Medallero & Analítica Avanzada</button>
+      <button class="tab-btn" onclick="switchView('brackets')">🥋 Llaves y Resultados en Vivo</button>
+    </div>
+
+    <!-- TAB 1: ADVANCED ANALYTICS & MEDAL STATISTICS -->
+    <div id="tabAnalytics" class="tab-content active">
+      
+      <!-- CONTROLS STRIP (3-WAY SELECTOR & MODALITY) -->
+      <section class="controls-panel">
+        <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+          <!-- 3-WAY SELECTOR -->
+          <div class="filter-group">
+            <label class="filter-label" for="selectGrouping">🏛️ Agrupar Medallero Por:</label>
+            <select id="selectGrouping" class="filter-select" onchange="setGrouping(this.value)">
+              <option value="schools" selected>🏫 Escuelas / Clubes / Filiales</option>
+              <option value="countries">🌍 Países / Delegaciones</option>
+              <option value="both">🌐 Escuela y País Combinados</option>
+            </select>
+          </div>
+
+          <!-- MODALITY FILTER -->
+          <div class="filter-group">
+            <label class="filter-label" for="selectModality">🥋 Disciplina:</label>
+            <select id="selectModality" class="filter-select" onchange="setModality(this.value)">
+              <option value="all" selected>🥊 Todas (Combate + Formas)</option>
+              <option value="combat">🥊 Solo Combate (Sparring)</option>
+              <option value="forms">🥋 Solo Formas (Tules / Poomsae)</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="font-size:12px; color:#94a3b8;">
+          ⚡ Datos en tiempo real desde la mesa de control
+        </div>
+      </section>
+
+      <!-- 5 INFOGRAPHIC MODULES GRID -->
+      <div class="analytics-grid">
+        
+        <!-- MODULE 1: MEDAL TABLE TOP 10 -->
+        <div class="analytics-card full-width">
+          <div class="card-header-bar">
+            <div class="card-title-box">
+              <h2>🥇 Medallero Oficial: Top 10</h2>
+              <p id="medalTableSub">Distribución de medallas de oro, plata y bronce por delegación.</p>
+            </div>
+          </div>
+          
+          <div style="display:flex; gap:24px; align-items:stretch; flex-wrap:wrap;">
+            <!-- Stacked Bars List -->
+            <div class="medal-bars-list" id="medalBarsContainer">
+              <!-- Injected via JS -->
+            </div>
+
+            <!-- Medal Totals Summary Strip -->
+            <div class="medal-summary-strip">
+              <div class="summary-medal-badge">
+                <span class="medal-icon-big">🥇</span>
+                <div class="medal-badge-data">
+                  <strong id="statTotalGold" style="color:#facc15;">0</strong>
+                  <span>Oros Entregados</span>
+                </div>
+              </div>
+              <div class="summary-medal-badge">
+                <span class="medal-icon-big">🥈</span>
+                <div class="medal-badge-data">
+                  <strong id="statTotalSilver" style="color:#cbd5e1;">0</strong>
+                  <span>Platas Entregadas</span>
+                </div>
+              </div>
+              <div class="summary-medal-badge">
+                <span class="medal-icon-big">🥉</span>
+                <div class="medal-badge-data">
+                  <strong id="statTotalBronze" style="color:#ea580c;">0</strong>
+                  <span>Bronces Entregados</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODULE 2: VOLUME VS GOLD CONVERSION (SCATTER PLOT) -->
+        <div class="analytics-card">
+          <div class="card-header-bar">
+            <div class="card-title-box">
+              <h2>🎯 Volumen vs. Tasa de Conversión a Oro</h2>
+              <p>Porcentaje de medallas de oro respecto al total obtenido por delegación.</p>
+            </div>
+          </div>
+          <div class="scatter-canvas-container">
+            <canvas id="scatterCanvas"></canvas>
+          </div>
+        </div>
+
+        <!-- MODULE 3: GOLD CONCENTRATION (DONUT CHART) -->
+        <div class="analytics-card">
+          <div class="card-header-bar">
+            <div class="card-title-box">
+              <h2>🍩 Concentración de Medallas de Oro</h2>
+              <p>Porcentaje de títulos acumulados en las delegaciones dominantes.</p>
+            </div>
+          </div>
+          <div class="donut-layout">
+            <div class="donut-chart-box">
+              <canvas id="donutCanvas"></canvas>
+              <div class="donut-center-stat">
+                <span class="big-pct" id="donutBigPct">0%</span>
+                <span class="sub-text">en las 5 principales delegaciones</span>
+              </div>
+            </div>
+            <div class="donut-table-box">
+              <table class="concentration-table">
+                <thead>
+                  <tr>
+                    <th>Delegación</th>
+                    <th style="text-align:center;">Oros</th>
+                    <th style="text-align:right;">% Participación</th>
+                  </tr>
+                </thead>
+                <tbody id="concentrationTableBody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODULE 4: WHO WINS WHERE (AGE CATEGORY HEATMAP) -->
+        <div class="analytics-card full-width">
+          <div class="card-header-bar">
+            <div class="card-title-box">
+              <h2>🗺️ Quién Gana Dónde: Medallas de Oro por División de Edad</h2>
+              <p>Matriz de victorias generacionales según categoría etaria oficial.</p>
+            </div>
+          </div>
+          <div class="heatmap-table-container">
+            <table class="heatmap-table">
+              <thead id="heatmapThead">
+                <!-- Injected via JS -->
+              </thead>
+              <tbody id="heatmapTbody">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+          </div>
+          <div class="heatmap-highlight-card" id="heatmapHighlights">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- MODULE 5: DEMOGRAPHICS & TOURNAMENT OVERVIEW -->
+        <div class="analytics-card full-width">
+          <div class="card-header-bar">
+            <div class="card-title-box">
+              <h2>👥 Métricas Generales de Participación</h2>
+              <p>Estadísticas demográficas y volumen deportivo del evento.</p>
+            </div>
+          </div>
+          <div class="demographics-grid">
+            <div class="stat-metric-card">
+              <div class="num" id="demoTotalAthletes">0</div>
+              <div class="lbl">Atletas en Llaves</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="num" id="demoTotalSchools">0</div>
+              <div class="lbl">Filiales Participantes</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="num" id="demoTotalBouts">0</div>
+              <div class="lbl">Encuentros Disputados</div>
+            </div>
+            <div class="stat-metric-card">
+              <div class="num" id="demoTotalMedals" style="color:#facc15;">0</div>
+              <div class="lbl">Medallas Totales</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- TAB 2: LIVE BRACKETS AND RESULTS -->
+    <div id="tabBrackets" class="tab-content">
+      <div class="analytics-card full-width">
+        <div class="card-header-bar">
+          <div class="card-title-box">
+            <h2>🥋 Llaves y Combates en Vivo</h2>
+            <p>Siga el avance combate por combate en cada arena y área.</p>
+          </div>
+        </div>
+        <input type="text" id="bracketSearch" class="search-box" placeholder="🔍 Buscar por competidor, categoría o escuela..." oninput="filterLiveBrackets()">
+        <div id="liveBracketsResults">Cargando llaves...</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="analytics.js"></script>
+  <script>
+    function switchView(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      
+      if (tab === 'analytics') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('tabAnalytics').classList.add('active');
+        recomputeAndRenderAnalytics();
+      } else {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('tabBrackets').classList.add('active');
+        renderLiveBrackets();
+      }
+    }
+
+    function renderLiveBrackets() {
+      const q = (document.getElementById("bracketSearch")?.value || "").toLowerCase();
+      let html = "";
+      const allCats = [...(rawTournamentData?.categories || []), ...(rawFormsData?.categories || [])];
+      
+      if (!allCats.length) {
+        document.getElementById("liveBracketsResults").innerHTML = "<p style='color:#94a3b8; text-align:center; padding:30px;'>No hay categorías disponibles.</p>";
+        return;
+      }
+
+      allCats.forEach(cat => {
+        if (q && !cat.name.toLowerCase().includes(q)) {
+          const parts = (cat.fighters || cat.competitors || []);
+          if (!parts.some(p => p && p.name.toLowerCase().includes(q))) return;
+        }
+        
+        html += `<div class="category-card"><div class="cat-title">${cat.name}</div>`;
+        if (!cat.bracket || !cat.bracket.length) {
+          html += "<p style='color:#94a3b8; font-size:13px;'>Aún no hay llaves generadas para esta categoría.</p></div>";
+          return;
+        }
+        
+        cat.bracket.forEach(m => {
+          const c1 = m.fighter1 || m.competitor1;
+          const c2 = m.fighter2 || m.competitor2;
+          const n1 = c1 ? c1.name : "BYE";
+          const n2 = c2 ? c2.name : "BYE";
+          const w1 = m.winner && c1 && m.winner.id === c1.id;
+          const w2 = m.winner && c2 && m.winner.id === c2.id;
+          
+          if (m.type === "t3.1" || m.type === "t3.2union") {
+            html += `<div class="match-box ${m.finished ? 'finished' : ''}">
+              <div class="competitor ${w1 ? 'winner' : ''}">${n1}</div>
+              <div class="vs">Presentación Individual</div>
+            </div>`;
+          } else {
+            html += `<div class="match-box ${m.finished ? 'finished' : ''}">
+              <div class="competitor ${w1 ? 'winner' : ''}">${n1}</div>
+              <div class="vs">VS</div>
+              <div class="competitor ${w2 ? 'winner' : ''}">${n2}</div>
+            </div>`;
+          }
+        });
+        html += "</div>";
+      });
+
+      document.getElementById("liveBracketsResults").innerHTML = html || "<p style='color:#94a3b8; text-align:center;'>No se encontraron resultados.</p>";
+    }
+
+    function filterLiveBrackets() {
+      renderLiveBrackets();
+    }
+  </script>
+</body>
+</html>
