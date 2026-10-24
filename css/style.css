@@ -1666,3 +1666,274 @@ body {
 .goog-logo-link {
   display: none !important;
 }
+
+/* ==========================================================================
+   WIDGET FLOTANTE DE WHATSAPP Y BOTONES DE CONVERSIÓN RÁPIDA
+   ========================================================================== */
+.whatsapp-float-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #ffffff !important;
+  padding: 12px 20px 12px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.2);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.whatsapp-float-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 35px rgba(37, 211, 102, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+.whatsapp-icon-wrap {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 50%;
+  color: #25D366;
+}
+
+.whatsapp-icon-wrap svg {
+  width: 20px;
+  height: 20px;
+  fill: #25D366;
+}
+
+.whatsapp-pulse {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 12px;
+  height: 12px;
+  background-color: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #38bdf8;
+  animation: pulse-ring 1.8s infinite cubic-bezier(0.45, 0, 0.55, 1);
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.4; }
+  100% { transform: scale(0.9); opacity: 1; }
+}
+
+.whatsapp-text-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.whatsapp-text-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  opacity: 0.9;
+  font-weight: 600;
+}
+
+.whatsapp-text-main {
+  font-size: 0.96rem;
+  font-weight: 800;
+}
+
+/* Botón WhatsApp en Cotizador y Secciones */
+.btn-whatsapp-quote {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #ffffff !important;
+  font-weight: 700;
+  padding: 14px 24px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.35);
+  transition: var(--transition-smooth);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.btn-whatsapp-quote:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+  filter: brightness(1.06);
+}
+
+.quote-actions-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.quote-actions-row .btn-whatsapp-quote,
+.quote-actions-row .btn-secondary {
+  flex: 1 1 200px;
+  margin-top: 0 !important;
+}
+
+/* ==========================================================================
+   SECCIÓN DE VIDEO / SHOWCASE MULTIMEDIA
+   ========================================================================== */
+.video-showcase-section {
+  padding: 80px 0;
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+  position: relative;
+  border-top: 1px solid var(--border-card);
+  border-bottom: 1px solid var(--border-card);
+}
+
+.video-player-container {
+  max-width: 900px;
+  margin: 36px auto 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--border-card);
+  background: #020617;
+  position: relative;
+}
+
+.video-aspect-box {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-aspect-box iframe,
+.video-aspect-box video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video-placeholder-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.95));
+  text-align: center;
+  padding: 30px;
+}
+
+.video-play-btn {
+  width: 76px;
+  height: 76px;
+  background: linear-gradient(135deg, var(--cyan-accent), var(--blue-corner));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: transform 0.25s ease;
+}
+
+.video-play-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   LANDING PAGES ESPECÍFICAS (DISCIPLINAS Y CASOS DE USO)
+   ========================================================================== */
+.discipline-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--cyan-accent);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb-nav {
+  padding: 16px 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+
+.breadcrumb-nav a {
+  color: var(--cyan-accent);
+}
+
+.discipline-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+}
+
+.discipline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.discipline-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cyan-accent);
+}
+
+.discipline-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.discipline-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float-btn {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 16px 10px 12px;
+    font-size: 0.88rem;
+  }
+  .quote-actions-row {
+    flex-direction: column;
+  }
+}

@@ -3,6 +3,13 @@
  * Motor Multi-Disciplina Completo (10 disciplinas oficiales), Cotizador y Modales
  */
 
+// Configuración Global de Contacto y WhatsApp
+window.SPIRIX_CONFIG = {
+  // Número de WhatsApp internacional con código de país (ejemplo: 598 para Uruguay, 549 para Argentina)
+  whatsappNumber: "59899000000", 
+  defaultMessage: "Hola SpirixTotal, me gustaría recibir asesoramiento y cotización para mi torneo de artes marciales."
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Catálogo Completo de Disciplinas (Basado estrictamente en sportsRegistry.js)
   const disciplineData = {
@@ -166,40 +173,57 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
   }
 
-  // 2. Cotizador Interactivo para Organizadores
+  // 2. Cotizador Interactivo para Organizadores (Email & WhatsApp)
   const sliderAreas = document.getElementById('calc-areas-slider');
   const badgeAreas = document.getElementById('calc-areas-val');
   const selectModality = document.getElementById('calc-modality');
   const selectDays = document.getElementById('calc-days');
   const btnEmail = document.getElementById('btn-email-quote');
+  const btnWhatsApp = document.getElementById('btn-whatsapp-quote');
+  const floatingWhatsApp = document.getElementById('floating-whatsapp-btn');
   
-  function updateEmailLink() {
-    if (!sliderAreas || !btnEmail) return;
-    const areas = sliderAreas.value;
+  function updateQuoteLinks() {
+    const areas = sliderAreas ? sliderAreas.value : '2';
     if (badgeAreas) badgeAreas.textContent = areas;
 
     const mod = selectModality ? selectModality.value : 'Combate y Formas';
-    const days = selectDays ? selectDays.value : '1 D\u00eda';
+    const days = selectDays ? selectDays.value : '1 Día';
 
-    const msg = `Hola SpirixTotal,%0A%0AEstoy organizando un torneo y deseo solicitar datos y presupuesto para mi evento con los siguientes requerimientos:%0A%0A` +
-                `- \u00c1reas de Tatami simult\u00e1neas: ${areas}%0A` +
-                `- Disciplina/Modalidad: ${mod}%0A` +
-                `- Duraci\u00f3n estimada: ${days}%0A%0A` +
-                `\u00bfPodr\u00edan brindarme informaci\u00f3n y disponibilidad de licencias? Muchas gracias.`;
+    const rawMsg = `Hola SpirixTotal! Estoy organizando un torneo y deseo cotizar licencias con estos datos:\n` +
+                   `• Áreas de Tatami simultáneas: ${areas}\n` +
+                   `• Disciplina/Modalidad: ${mod}\n` +
+                   `• Duración estimada: ${days}\n\n` +
+                   `¿Podrían indicarme disponibilidad y costo? Muchas gracias.`;
 
-    btnEmail.href = `mailto:spirixtotal@gmail.com?subject=Solicitud de Datos y Presupuesto&body=${msg}`;
+    // Email link
+    if (btnEmail) {
+      btnEmail.href = `mailto:spirixtotal@gmail.com?subject=Solicitud de Datos y Presupuesto&body=${encodeURIComponent(rawMsg)}`;
+    }
+
+    // WhatsApp Quote link
+    if (btnWhatsApp) {
+      const phone = window.SPIRIX_CONFIG.whatsappNumber;
+      btnWhatsApp.href = `https://wa.me/${phone}?text=${encodeURIComponent(rawMsg)}`;
+    }
+
+    // Floating WhatsApp button sync
+    if (floatingWhatsApp) {
+      const phone = window.SPIRIX_CONFIG.whatsappNumber;
+      const genericMsg = window.SPIRIX_CONFIG.defaultMessage;
+      floatingWhatsApp.href = `https://wa.me/${phone}?text=${encodeURIComponent(genericMsg)}`;
+    }
   }
 
   if (sliderAreas) {
-    sliderAreas.addEventListener('input', updateEmailLink);
+    sliderAreas.addEventListener('input', updateQuoteLinks);
   }
   if (selectModality) {
-    selectModality.addEventListener('change', updateEmailLink);
+    selectModality.addEventListener('change', updateQuoteLinks);
   }
   if (selectDays) {
-    selectDays.addEventListener('change', updateEmailLink);
+    selectDays.addEventListener('change', updateQuoteLinks);
   }
-  updateEmailLink();
+  updateQuoteLinks();
 
   // 3. Menú Móvil — implementación única y limpia
   const mobileToggle = document.querySelector('.mobile-toggle');
