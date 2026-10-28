@@ -6,7 +6,7 @@
 // Configuración Global de Contacto y WhatsApp
 window.SPIRIX_CONFIG = {
   // Número de WhatsApp internacional con código de país (ejemplo: 598 para Uruguay, 549 para Argentina)
-  whatsappNumber: "59899000000", 
+  whatsappNumber: "59893951261", 
   defaultMessage: "Hola SpirixTotal, me gustaría recibir asesoramiento y cotización para mi torneo de artes marciales."
 };
 
